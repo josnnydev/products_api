@@ -4,6 +4,7 @@ import morgan from 'morgan';
 const app = express();
 
 import productsRoutes from './routes/products.route';
+import authRoutes from './routes/auth.route'
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
@@ -18,7 +19,8 @@ app.get('/',(req:Request,res:Response)=>{
     })
 })
 
-app.use('/products',productsRoutes)
+app.use('api/products',productsRoutes)
+app.use('api/auth',authRoutes)
 
 
 export default app;
