@@ -1,8 +1,10 @@
 import app from './app'
- import './database'
+const port = process.env.PORT
+import './database'
+ 
 
 
 
- app.listen(3000);
+ app.listen(port);
 
- console.log(`Listening on port:`,3000)
+ console.log(`Listening on port:${port}`)

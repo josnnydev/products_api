@@ -1,26 +1,20 @@
-import express from 'express';
-import {Request,Response} from 'express';
-import morgan from 'morgan';
+import express from "express";
+import "dotenv/config";
+import morgan from "morgan";
+import cors from "cors";
+
+import authRoutes from "./routes/auth.routes";
+
+//initialization
 const app = express();
 
-import productsRoutes from './routes/products.route';
-import authRoutes from './routes/auth.route'
+//middlewares
+app.use(morgan("dev"));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-
-app.use(morgan('dev'))
-
-app.get('/',(req:Request,res:Response)=>{
-    res.json({
-        autor:"josnnydev",
-        description:"welcome my project",
-        version:"1.0.0"
-    })
-})
-
-app.use('api/products',productsRoutes)
-app.use('api/auth',authRoutes)
-
+//routes
+app.use(authRoutes);
 
 export default app;

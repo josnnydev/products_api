@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
+import config from './config/config'
 
-mongoose.connect('mongodb://127.0.0.1:27017/companydb');
+mongoose.connect(config.DB.URI);
 try{
     console.log('connected to database')
 }catch(e){
     console.log(`no connected`)
+    process.exit(0)
 }
